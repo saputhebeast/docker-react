@@ -7,3 +7,15 @@ before-install:
 
 script:
   - docker run -e CI=true zulake/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-north-1"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-eu-north-1-089520470836"
+  bucket_path: "docker"
+  on:
+    branch: main
+access_key_id: $ACCESS_KEY
+secret_access_key: $SECRET_KEY
